@@ -735,60 +735,83 @@
       border-bottom: 1px solid rgba(0,0,0,0.06);
       box-shadow: 0 16px 32px rgba(0,0,0,0.08);
     }
-    .nav-links.open { display: flex; text-align: left; gap: 0; }
+    .nav-links.open {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 0 !important;
+      text-align: left;
+    }
     .nav-links > li {
       width: 100%;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-      padding: 0;
+      flex: 0 0 auto !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      min-height: 0 !important;
+      height: auto !important;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      overflow: hidden;
     }
     .nav-links > li:last-child { border-bottom: 0; }
+    .nav-links > li.has-dd { display: block; position: relative; }
+    .nav-links > li.has-dd.open { overflow: visible; }
     .nav-links > li > a,
-    .nav-links .dd-btn {
-      width: 100%; padding: 12px 0; box-sizing: border-box;
-      text-align: left; font-size: 15px; font-weight: 500; justify-content: flex-start;
-      min-height: 0; align-items: center; line-height: 1.3;
+    .nav-links > li > .dd-btn {
+      display: flex !important;
+      width: 100%;
+      margin: 0 !important;
+      padding: 14px 0 !important;
+      box-sizing: border-box;
+      text-align: left;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.25 !important;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 0 !important;
+      height: auto !important;
     }
-    .nav-links .dd-btn { justify-content: space-between; }
-    .nav-links .dropdown {
+    .nav-links > li > .dd-btn { justify-content: space-between; }
+    .nav-links .has-dd:hover > .dropdown,
+    .nav-links .has-dd:focus-within > .dropdown,
+    .nav-links .has-dd:not(.open) > .dropdown {
       display: none !important;
-      position: absolute !important;
+      position: fixed !important;
+      left: -9999px !important;
+      top: 0 !important;
+      width: 0 !important;
       height: 0 !important;
       max-height: 0 !important;
       overflow: hidden !important;
       padding: 0 !important;
       margin: 0 !important;
       border: 0 !important;
-      box-shadow: none !important;
       opacity: 0 !important;
       visibility: hidden !important;
       pointer-events: none !important;
       transform: none !important;
-      min-width: 0 !important;
-      width: 100%;
-      left: 0;
-      top: auto;
     }
-    .nav-links .has-dd:hover .dropdown,
-    .nav-links .has-dd:focus-within .dropdown {
-      display: none !important;
-      height: 0 !important;
-      max-height: 0 !important;
-      opacity: 0 !important;
-      visibility: hidden !important;
-    }
-    .nav-links .has-dd.open .dropdown {
+    .nav-links .has-dd.open > .dropdown {
       display: block !important;
       position: static !important;
+      left: auto !important;
+      top: auto !important;
+      width: 100% !important;
       height: auto !important;
       max-height: none !important;
       overflow: visible !important;
-      padding: 0 0 4px !important;
+      padding: 0 0 8px !important;
       margin: 0 !important;
+      border: 0 !important;
       opacity: 1 !important;
       visibility: visible !important;
       pointer-events: auto !important;
+      transform: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
     }
-    .nav-links .dropdown a { padding: 8px 0 8px 14px; text-align: left; font-size: 14px; }
+    .nav-links .dropdown a { padding: 8px 0 8px 14px !important; text-align: left; font-size: 14px; }
+    .nav-links .dropdown a span { margin-top: 2px; }
     section { padding: 80px 24px; }
     .hero { padding: 120px 24px 60px; }
     .hero-bg-b { font-size: 200px; right: -20px; }
@@ -820,8 +843,13 @@
     opacity: 0; visibility: hidden; transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
     z-index: 120;
   }
-  .has-dd:hover .dropdown, .has-dd.open .dropdown, .has-dd:focus-within .dropdown {
+  .has-dd.open .dropdown {
     opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .has-dd:hover .dropdown, .has-dd:focus-within .dropdown {
+      opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+    }
   }
   .dropdown a {
     display: block; padding: 12px 14px; border-radius: 12px;
