@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>LinkedIn Marketing & Branding — Blue Sky</title>
+<title>LinkedIn Marketing &amp; Branding — Blue Sky</title>
+<meta name="description" content="Blue Sky builds founders and leaders into the voices their buyers trust on LinkedIn. Content, outreach and lead tracking from ₹20,000 per month.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
@@ -16,19 +17,27 @@
     --white: #FFFFFF;
     --gray: #F7F5F0;
     --gray-mid: #888070;
-    --section-gap: 120px;
+    --radius: 18px;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--white);
     color: var(--black);
+    line-height: 1.65;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; border-radius: 6px; }
+  .wrap { width: min(1160px, 100% - 40px); margin-inline: auto; }
+  h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(2rem, 4.2vw, 3.1rem); }
+  .lede { font-size: 1.12rem; color: var(--gray-mid); max-width: 60ch; font-weight: 300; }
+  section { padding: 96px 0; }
 
   /* ── NAV ── */
   nav {
@@ -40,765 +49,327 @@
     border-bottom: 1px solid rgba(0,0,0,0.06);
     transition: padding 0.3s;
   }
-
-  .nav-logo {
-    display: flex; align-items: center; gap: 10px; text-decoration: none;
-  }
-
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
   .logo-mark {
-    width: 44px; height: 44px;
-    background: var(--yellow);
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 26px;
-    color: var(--white);
-    letter-spacing: -2px;
+    width: 44px; height: 44px; background: var(--yellow); border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; position: relative;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 26px; color: var(--white); letter-spacing: -2px;
   }
-
   .logo-mark .dot {
-    position: absolute; top: 5px; left: 8px;
-    width: 7px; height: 7px;
-    background: var(--orange);
-    border-radius: 50%;
+    position: absolute; top: 5px; left: 8px; width: 7px; height: 7px;
+    background: var(--orange); border-radius: 50%;
   }
-
   .logo-text {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 1.15;
-    color: var(--black);
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; line-height: 1.15; color: var(--black);
   }
-
   .logo-text span {
-    display: block;
-    font-weight: 400;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--gray-mid);
-    text-transform: uppercase;
+    display: block; font-weight: 400; font-size: 10px; letter-spacing: 2px;
+    color: var(--gray-mid); text-transform: uppercase;
   }
-
-  .nav-links {
-    display: flex; gap: 36px; list-style: none;
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links > li > a {
+    font-size: 14px; font-weight: 500; color: var(--black); letter-spacing: 0.3px; transition: color 0.2s;
   }
-
-  .nav-links a {
-    font-size: 14px; font-weight: 500;
-    color: var(--black); text-decoration: none;
-    letter-spacing: 0.3px;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--orange); }
-
-  .nav-cta {
-    background: var(--yellow);
-    color: var(--black);
-    border: none; cursor: pointer;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 13px;
-    padding: 10px 22px;
-    border-radius: 50px;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.15s;
-  }
-
-  .nav-cta:hover { background: var(--orange); color: var(--white); transform: scale(1.03); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    background: var(--yellow);
-    display: flex; align-items: center;
-    padding: 140px 60px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-bg-b {
-    position: absolute; right: -60px; top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(300px, 40vw, 600px);
-    color: rgba(255,255,255,0.18);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-    animation: floatB 6s ease-in-out infinite;
-  }
-
-  @keyframes floatB {
-    0%,100% { transform: translateY(-50%) translateX(0); }
-    50% { transform: translateY(-52%) translateX(-10px); }
-  }
-
-  .hero-dot {
-    position: absolute;
-    border-radius: 50%;
-    background: var(--orange);
-    opacity: 0.7;
-  }
-
-  .hero-dot-1 { width: 18px; height: 18px; top: 18%; left: 12%; animation: pulse 3s ease-in-out infinite; }
-  .hero-dot-2 { width: 10px; height: 10px; top: 65%; left: 8%; animation: pulse 4s ease-in-out infinite 1s; }
-  .hero-dot-3 { width: 26px; height: 26px; bottom: 20%; right: 35%; animation: pulse 3.5s ease-in-out infinite 0.5s; }
-
-  @keyframes pulse {
-    0%,100% { transform: scale(1); opacity: 0.7; }
-    50% { transform: scale(1.3); opacity: 1; }
-  }
-
-  .hero-content { max-width: 700px; position: relative; z-index: 2; }
-
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(0,0,0,0.1);
-    border-radius: 50px;
-    padding: 6px 16px;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--black);
-    margin-bottom: 32px;
-    animation: fadeUp 0.8s ease both;
-  }
-
-  .hero-badge .dot-badge { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
-
-  .hero h1 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(48px, 7vw, 96px);
-    line-height: 0.95;
-    color: var(--black);
-    margin-bottom: 28px;
-    animation: fadeUp 0.8s ease 0.15s both;
-  }
-
-  .hero h1 em {
-    font-style: normal;
-    color: var(--white);
-    -webkit-text-stroke: 2px var(--black);
-  }
-
-  .hero-sub {
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 1.7;
-    color: rgba(0,0,0,0.7);
-    max-width: 480px;
-    margin-bottom: 48px;
-    animation: fadeUp 0.8s ease 0.3s both;
-  }
-
-  .hero-ctas {
-    display: flex; gap: 16px; flex-wrap: wrap;
-    animation: fadeUp 0.8s ease 0.45s both;
-  }
-
-  .btn-primary {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 14px;
-    padding: 16px 36px; border-radius: 50px;
-    text-decoration: none;
-    transition: transform 0.2s, background 0.2s;
-    letter-spacing: 0.5px;
-  }
-
-  .btn-primary:hover { background: var(--orange); transform: translateY(-2px); }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--black);
-    font-family: 'Syne', sans-serif;
-    font-weight: 600; font-size: 14px;
-    padding: 16px 36px; border-radius: 50px;
-    text-decoration: none;
-    border: 2px solid var(--black);
-    transition: transform 0.2s, background 0.2s, color 0.2s;
-    letter-spacing: 0.5px;
-  }
-
-  .btn-secondary:hover { background: var(--black); color: var(--white); transform: translateY(-2px); }
-
-  /* ── MARQUEE ── */
-  .marquee-section {
-    background: var(--black);
-    padding: 18px 0;
-    overflow: hidden;
-  }
-
-  .marquee-track {
-    display: flex; gap: 0;
-    animation: marquee 20s linear infinite;
-    white-space: nowrap;
-  }
-
-  .marquee-item {
-    display: inline-flex; align-items: center; gap: 24px;
-    padding: 0 32px;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--yellow);
-  }
-
-  .marquee-item .sep { color: var(--orange); font-size: 18px; }
-
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  /* ── SECTION COMMONS ── */
-  section { padding: var(--section-gap) 60px; }
-
-  .section-label {
-    display: inline-flex; align-items: center; gap: 10px;
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 2.5px; text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 20px;
-  }
-
-  .section-label::before {
-    content: '';
-    display: block; width: 24px; height: 2px;
-    background: var(--orange);
-  }
-
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(36px, 5vw, 64px);
-    line-height: 1.05;
-    color: var(--black);
-  }
-
-  /* ── ABOUT ── */
-  .about { background: var(--gray); }
-
-  .about-inner {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 80px; align-items: center;
-  }
-
-  .about-left .section-title { margin-bottom: 28px; }
-
-  .about-left p {
-    font-size: 16px; line-height: 1.8;
-    color: #555;
-    margin-bottom: 16px;
-  }
-
-  .about-motto {
-    margin-top: 36px;
-    background: var(--yellow);
-    border-radius: 20px;
-    padding: 28px 32px;
-    display: flex; align-items: flex-start; gap: 16px;
-  }
-
-  .motto-icon {
-    font-size: 32px; flex-shrink: 0; margin-top: 2px;
-  }
-
-  .about-motto strong {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 22px;
-    display: block;
-    margin-bottom: 6px;
-  }
-
-  .about-motto p { font-size: 14px; color: rgba(0,0,0,0.65); margin: 0; }
-
-  .about-right {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .stat-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 32px 24px;
-    text-align: center;
-    box-shadow: 0 2px 24px rgba(0,0,0,0.06);
-    transition: transform 0.2s;
-  }
-
-  .stat-card:hover { transform: translateY(-4px); }
-
-  .stat-card:first-child { background: var(--black); color: var(--white); }
-
-  .stat-card .num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; font-size: 52px;
-    line-height: 1;
-    color: var(--yellow);
-  }
-
-  .stat-card:not(:first-child) .num { color: var(--black); }
-
-  .stat-card .lbl {
-    font-size: 13px; font-weight: 500;
-    margin-top: 8px;
-    opacity: 0.7;
-  }
-
-  /* ── SERVICES ── */
-  .services-header {
-    text-align: center;
-    margin-bottom: 70px;
-  }
-
-  .services-header .section-label { justify-content: center; }
-  .services-header .section-label::before { display: none; }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
-  }
-
-  .service-card {
-    border-radius: 28px;
-    padding: 48px 36px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s;
-    cursor: default;
-  }
-
-  .service-card:hover { transform: translateY(-8px); }
-
-  .service-card.card-yellow { background: var(--yellow); }
-  .service-card.card-black { background: var(--black); color: var(--white); }
-  .service-card.card-outline { background: var(--white); border: 2px solid var(--black); }
-
-  .card-num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; font-size: 80px;
-    line-height: 1;
-    opacity: 0.12;
-    position: absolute; top: 20px; right: 24px;
-  }
-
-  .card-icon {
-    width: 56px; height: 56px;
-    border-radius: 16px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 26px;
-    margin-bottom: 28px;
-  }
-
-  .card-yellow .card-icon { background: rgba(0,0,0,0.12); }
-  .card-black .card-icon { background: rgba(255,255,255,0.1); }
-  .card-outline .card-icon { background: var(--yellow); }
-
-  .service-card h3 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 24px;
-    line-height: 1.2;
-    margin-bottom: 16px;
-  }
-
-  .service-card p {
-    font-size: 15px; line-height: 1.7;
-    opacity: 0.75;
-    margin-bottom: 28px;
-  }
-
-  .service-tags {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-
-  .tag {
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 0.5px;
-    padding: 5px 12px;
-    border-radius: 50px;
-  }
-
-  .card-yellow .tag { background: rgba(0,0,0,0.1); color: var(--black); }
-  .card-black .tag { background: rgba(255,255,255,0.12); color: var(--white); }
-  .card-outline .tag { background: var(--yellow); color: var(--black); }
-
-  /* ── HOW WE WORK ── */
-  .process { background: var(--black); color: var(--white); }
-  .process .section-title { color: var(--white); margin-bottom: 64px; }
-  .process .section-label { color: var(--yellow); }
-
-  .process-header { margin-bottom: 64px; }
-
-  .process-steps {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-  }
-
-  .step {
-    padding: 36px 30px;
-    border-right: 1px solid rgba(255,255,255,0.08);
-    position: relative;
-  }
-
-  .step:last-child { border-right: none; }
-
-  .step-num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; font-size: 13px;
-    letter-spacing: 2px;
-    color: var(--yellow);
-    margin-bottom: 24px;
-  }
-
-  .step h4 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 20px;
-    margin-bottom: 14px;
-    color: var(--white);
-  }
-
-  .step p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.55); }
-
-  /* ── WHY US ── */
-  .why { background: var(--gray); }
-
-  .why-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-
-  .why-left .section-title { margin-bottom: 20px; }
-  .why-left > p { font-size: 16px; line-height: 1.8; color: #666; margin-bottom: 40px; }
-
-  .why-visual {
-    background: var(--yellow);
-    border-radius: 28px;
-    padding: 48px;
-    text-align: center;
-  }
-
-  .why-visual-b {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; font-size: 140px;
-    line-height: 1;
-    color: var(--white);
-    position: relative;
-    display: inline-block;
-  }
-
-  .why-visual-b .odot {
-    position: absolute; top: 10px; left: 20px;
-    width: 22px; height: 22px;
-    background: var(--orange);
-    border-radius: 50%;
-  }
-
-  .why-visual p {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-top: 12px;
-    color: var(--black);
-  }
-
-  .pillars {
-    display: flex; flex-direction: column; gap: 20px;
-  }
-
-  .pillar {
-    background: var(--white);
-    border-radius: 18px;
-    padding: 24px 28px;
-    display: flex; align-items: flex-start; gap: 18px;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
-    transition: transform 0.2s;
-  }
-
-  .pillar:hover { transform: translateX(6px); }
-
-  .pillar-icon {
-    width: 46px; height: 46px; flex-shrink: 0;
-    background: var(--yellow);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-  }
-
-  .pillar h5 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 16px;
-    margin-bottom: 4px;
-  }
-
-  .pillar p { font-size: 13px; color: #777; line-height: 1.6; }
-
-  /* ── WHO WE SERVE ── */
-  .audience {
-    background: var(--white);
-  }
-
-  .audience-header { text-align: center; margin-bottom: 64px; }
-  .audience-header .section-label { justify-content: center; }
-  .audience-header .section-label::before { display: none; }
-
-  .audience-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-
-  .aud-card {
-    border-radius: 24px;
-    padding: 36px 24px;
-    text-align: center;
-    border: 1.5px solid rgba(0,0,0,0.08);
-    transition: all 0.2s;
-    cursor: default;
-  }
-
-  .aud-card:hover {
-    border-color: var(--yellow);
-    background: var(--yellow-light);
-    transform: translateY(-4px);
-  }
-
-  .aud-icon { font-size: 40px; margin-bottom: 16px; }
-
-  .aud-card h4 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 17px;
-    margin-bottom: 8px;
-  }
-
-  .aud-card p { font-size: 13px; color: #777; line-height: 1.6; }
-
-  /* ── CTA BAND ── */
-  .cta-band {
-    background: var(--yellow);
-    padding: 100px 60px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .cta-band-bg {
-    position: absolute; bottom: -60px; left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; font-size: 220px;
-    color: rgba(0,0,0,0.05);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-    white-space: nowrap;
-  }
-
-  .cta-band .section-label { justify-content: center; color: var(--black); }
-  .cta-band .section-label::before { display: none; }
-
-  .cta-band h2 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(40px, 6vw, 80px);
-    line-height: 1.05;
-    color: var(--black);
-    margin: 20px 0 36px;
-  }
-
-  .cta-band h2 em {
-    font-style: normal;
-    color: var(--white);
-    -webkit-text-stroke: 2px var(--black);
-  }
-
-  .cta-band .btn-primary {
-    font-size: 15px;
-    padding: 18px 48px;
-    background: var(--black);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--black);
-    color: var(--white);
-    padding: 70px 60px 40px;
-  }
-
-  .footer-top {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 60px;
-    margin-bottom: 60px;
-  }
-
-  .footer-brand .logo-mark { margin-bottom: 20px; }
-  .footer-brand p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 260px; }
-
-  .footer-col h6 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 13px;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--yellow);
-    margin-bottom: 20px;
-  }
-
-  .footer-col ul { list-style: none; }
-  .footer-col li { margin-bottom: 12px; }
-  .footer-col a {
-    font-size: 14px; color: rgba(255,255,255,0.55);
-    text-decoration: none; transition: color 0.2s;
-  }
-  .footer-col a:hover { color: var(--white); }
-
-  .footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding-top: 30px;
-    display: flex; align-items: center; justify-content: space-between;
-    font-size: 13px; color: rgba(255,255,255,0.35);
-  }
-
-  .footer-bottom span em { color: var(--yellow); font-style: normal; }
-
-  .social-row { display: flex; gap: 14px; }
-  .social-btn {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px; cursor: pointer;
-    transition: background 0.2s;
-    text-decoration: none;
-    color: var(--white);
-  }
-  .social-btn:hover { background: var(--yellow); color: var(--black); }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 900px) {
-    nav { padding: 16px 24px; }
-    .nav-links { display: none; }
-    section { padding: 80px 24px; }
-    .hero { padding: 120px 24px 60px; }
-    .hero-bg-b { font-size: 200px; right: -20px; }
-    .about-inner, .why-inner { grid-template-columns: 1fr; gap: 40px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .process-steps { grid-template-columns: 1fr 1fr; }
-    .audience-grid { grid-template-columns: 1fr 1fr; }
-    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
-    .cta-band { padding: 70px 24px; }
-    footer { padding: 60px 24px 32px; }
-  }
-
-  /* ── SERVICES DROPDOWN ── */
+  .nav-links > li > a:hover { color: var(--orange); }
   .has-dd { position: relative; }
   .dd-btn {
-    font: inherit; font-size: 14px; font-weight: 500;
-    color: var(--black); background: none; border: 0; cursor: pointer;
-    letter-spacing: 0.3px; padding: 0; display: inline-flex; align-items: center; gap: 6px;
-    transition: color 0.2s;
+    font: inherit; font-size: 14px; font-weight: 500; color: var(--black);
+    background: none; border: 0; cursor: pointer; letter-spacing: 0.3px; padding: 0;
+    display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s;
   }
   .dd-btn:hover, .has-dd:hover .dd-btn, .has-dd.open .dd-btn { color: var(--orange); }
   .dd-btn svg { width: 10px; height: 10px; transition: transform 0.2s; }
   .has-dd:hover .dd-btn svg, .has-dd.open .dd-btn svg, .has-dd:focus-within .dd-btn svg { transform: rotate(180deg); }
   .dropdown {
     position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(6px);
-    min-width: 280px; background: var(--white);
-    border: 1px solid rgba(0,0,0,0.08); border-radius: 16px;
-    padding: 8px; box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-    opacity: 0; visibility: hidden; transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
-    z-index: 120;
+    min-width: 280px; background: var(--white); border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 16px; padding: 8px; box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+    opacity: 0; visibility: hidden; transition: 0.18s; z-index: 120;
   }
   .has-dd:hover .dropdown, .has-dd.open .dropdown, .has-dd:focus-within .dropdown {
     opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
   }
   .dropdown a {
     display: block; padding: 12px 14px; border-radius: 12px;
-    font-size: 14px; font-weight: 600; color: var(--black); text-decoration: none;
+    font-size: 14px; font-weight: 600; color: var(--black);
   }
-  .dropdown a span {
-    display: block; font-weight: 400; font-size: 12px; color: var(--gray-mid); margin-top: 2px;
+  .dropdown a span { display: block; font-weight: 400; font-size: 12px; color: var(--gray-mid); margin-top: 2px; }
+  .dropdown a:hover, .dropdown a.current { background: var(--yellow-light); }
+  .nav-cta {
+    background: var(--yellow); color: var(--black); font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 13px; padding: 10px 22px; border-radius: 50px;
+    letter-spacing: 0.5px; transition: background 0.2s, transform 0.15s;
   }
-  .dropdown a:hover, .dropdown a.current { background: var(--yellow-light); color: var(--black); }
+  .nav-cta:hover { background: var(--orange); color: var(--white); transform: scale(1.03); }
 
-  /* ── SERVICE PAGE ── */
-  .page-hero { min-height: auto; padding: 160px 60px 90px; }
-  .page-hero h1 { font-size: clamp(40px, 6vw, 72px); }
-  .page-hero .hero-sub { margin-bottom: 0; }
-  .detail { background: var(--gray); }
-  .detail-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
-  .detail-copy .section-title { margin-bottom: 24px; }
-  .detail-copy p { font-size: 16px; line-height: 1.8; color: #555; margin-bottom: 16px; }
-  .detail-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
-  .detail-tags .tag { background: var(--yellow); color: var(--black); font-size: 12px; font-weight: 600; letter-spacing: 0.5px; padding: 7px 14px; border-radius: 50px; }
-  .offer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .offer-card {
-    background: var(--white); border-radius: 20px; padding: 28px 26px;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.05); transition: transform 0.2s;
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem;
+    padding: 14px 28px; border-radius: 999px; border: 2px solid transparent;
+    cursor: pointer; transition: transform 0.15s, background 0.15s, color 0.15s;
   }
-  .offer-card:hover { transform: translateY(-4px); }
-  .offer-card .offer-num {
-    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 13px;
-    letter-spacing: 2px; color: var(--orange); margin-bottom: 14px;
+  .btn:hover { transform: translateY(-2px); }
+  .btn-black { background: var(--black); color: var(--white); }
+  .btn-black:hover { background: var(--orange); }
+  .btn-yellow { background: var(--yellow); color: var(--black); }
+  .btn-yellow:hover { background: var(--orange); color: var(--white); }
+  .btn-ghost { border-color: currentColor; background: transparent; }
+  .btn-ghost:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 0; background: var(--yellow); overflow: hidden; position: relative;
   }
-  .offer-card h3 {
-    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 20px;
-    margin-bottom: 10px; line-height: 1.2;
+  .hero-in {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center;
+    padding: 140px 0 100px;
   }
-  .offer-card p { font-size: 14px; line-height: 1.7; color: #666; margin: 0; }
-  .scope { background: var(--black); color: var(--white); }
-  .scope .section-title { color: var(--white); margin-bottom: 20px; }
-  .scope .section-label { color: var(--yellow); }
-  .scope > .scope-lede { font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.55); max-width: 560px; margin-bottom: 56px; }
-  .scope-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
-  .scope-item { padding: 28px 24px; border-right: 1px solid rgba(255,255,255,0.08); }
-  .scope-item:last-child { border-right: none; }
-  .scope-item h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; margin-bottom: 12px; color: var(--white); }
-  .scope-item p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.55); }
-  @media (max-width: 900px) {
-    .page-hero { padding: 130px 24px 70px; }
-    .detail-inner, .offer-grid { grid-template-columns: 1fr; gap: 28px; }
-    .scope-grid { grid-template-columns: 1fr 1fr; }
+  .hero .tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(0,0,0,0.1); padding: 8px 16px; border-radius: 999px;
+    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 26px;
+  }
+  .hero .tag i { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); }
+  .hero h1 {
+    font-size: clamp(2.4rem, 5.2vw, 4rem); margin-bottom: 22px; max-width: 14ch;
+  }
+  .hero p.lede { color: rgba(0,0,0,0.7); margin-bottom: 32px; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero-note { margin-top: 20px; font-size: 0.92rem; color: rgba(0,0,0,0.55); }
+  .hero-visual { position: relative; }
+  .post {
+    background: var(--white); color: var(--black); border-radius: 20px; padding: 22px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.18); transform: rotate(1.5deg);
+    max-width: 420px; margin-left: auto;
+  }
+  .post-head { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; }
+  .avatar {
+    width: 46px; height: 46px; border-radius: 50%; flex: none;
+    background: linear-gradient(135deg, var(--yellow), var(--orange));
+  }
+  .post-head b { display: block; font-size: 0.95rem; line-height: 1.2; font-family: 'Syne', sans-serif; }
+  .post-head small { color: var(--gray-mid); font-size: 0.78rem; }
+  .post > p { font-size: 0.95rem; margin-bottom: 14px; }
+  .poster {
+    border-radius: 14px; background: var(--gray); padding: 26px 22px; margin-bottom: 14px;
+    position: relative; overflow: hidden;
+  }
+  .poster h3 { font-size: 1.35rem; max-width: 14ch; }
+  .poster::after {
+    content: ""; position: absolute; right: -30px; bottom: -40px;
+    width: 140px; height: 140px; border-radius: 50%; background: var(--yellow); opacity: 0.7;
+  }
+  .poster small {
+    display: block; margin-top: 14px; font-weight: 700; font-size: 0.78rem;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-mid);
+  }
+  .post-actions {
+    display: flex; gap: 18px; font-size: 0.84rem; font-weight: 600;
+    color: var(--gray-mid); border-top: 1px solid rgba(0,0,0,0.08); padding-top: 12px;
+  }
+  .float {
+    position: absolute; background: var(--black); color: var(--white);
+    font-size: 0.8rem; font-weight: 700; padding: 10px 16px; border-radius: 999px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.2); display: flex; gap: 8px; align-items: center;
+  }
+  .float i { width: 8px; height: 8px; border-radius: 50%; background: var(--yellow); }
+  .f1 { left: -6px; top: -40px; }
+  .f2 { right: 8px; bottom: -30px; }
+
+  /* ── NARRATIVE ── */
+  .narr-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 72px; }
+  .narr-side { position: sticky; top: 110px; align-self: start; }
+  .narr-side h2 { margin-bottom: 24px; font-size: clamp(1.8rem, 3.2vw, 2.4rem); }
+  .narr-body p { font-size: 1.05rem; color: #555; margin-bottom: 20px; max-width: 62ch; }
+  .narr-body p.big {
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.55rem;
+    line-height: 1.3; color: var(--black); margin-bottom: 28px;
+  }
+  .narr-body h3 { font-size: 1.35rem; margin: 36px 0 10px; }
+  .pull {
+    border-left: 4px solid var(--orange); background: var(--yellow-light);
+    padding: 22px 26px; border-radius: 0 var(--radius) var(--radius) 0;
+    margin: 32px 0; font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: 1.2rem; line-height: 1.4;
   }
 
+  /* ── WHAT ── */
+  .what { background: var(--gray); }
+  .sec-head { max-width: 720px; margin-bottom: 48px; }
+  .sec-head h2 { margin-bottom: 14px; }
+  .what-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .what-card {
+    background: var(--white); border-radius: var(--radius); padding: 28px 24px;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .what-card .ic {
+    width: 48px; height: 48px; border-radius: 14px; background: var(--yellow);
+    display: grid; place-items: center; font-size: 1.3rem; margin-bottom: 18px;
+  }
+  .what-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
+  .what-card p { font-size: 0.94rem; color: var(--gray-mid); }
+
+  /* ── PROCESS ── */
+  .steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    counter-reset: s; position: relative;
+  }
+  .step { padding: 0 24px 0 0; position: relative; }
+  .step::before {
+    counter-increment: s; content: counter(s);
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--black); color: var(--yellow);
+    display: grid; place-items: center;
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.95rem;
+    margin-bottom: 22px; position: relative; z-index: 1;
+  }
+  .step::after {
+    content: ""; position: absolute; left: 42px; top: 21px; right: 0; height: 2px;
+    background: rgba(0,0,0,0.1); z-index: 0;
+  }
+  .step:last-child::after { display: none; }
+  .step h3 { font-size: 1.15rem; margin-bottom: 8px; }
+  .step p { font-size: 0.94rem; color: var(--gray-mid); }
+
+  /* ── PLANS ── */
+  .plans { background: linear-gradient(180deg, var(--white) 0%, var(--gray) 100%); }
+  .plans .sec-head { margin-inline: auto; text-align: center; }
+  .plans .sec-head .lede { margin-inline: auto; }
+  .plan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
+  .plan {
+    background: var(--white); border: 1.5px solid rgba(0,0,0,0.08); border-radius: 24px;
+    padding: 36px 28px; display: flex; flex-direction: column; position: relative;
+  }
+  .plan .alt { font-size: 0.82rem; font-weight: 700; color: var(--orange); margin-bottom: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .plan h3 { font-size: 1.9rem; margin-bottom: 6px; }
+  .plan .for { color: var(--gray-mid); font-size: 0.95rem; min-height: 3.2em; margin-bottom: 20px; }
+  .price { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+  .price b { font-family: 'Syne', sans-serif; font-size: 2.6rem; line-height: 1; }
+  .price span { color: var(--gray-mid); font-weight: 600; font-size: 0.92rem; }
+  .commit {
+    display: inline-block; background: var(--yellow-light); color: var(--black);
+    font-weight: 700; font-size: 0.82rem; padding: 6px 14px; border-radius: 999px;
+    margin-bottom: 24px; align-self: flex-start;
+  }
+  .plan ul { list-style: none; margin-bottom: 28px; flex: 1; }
+  .plan li {
+    position: relative; padding: 9px 0 9px 28px; font-size: 0.94rem;
+    border-top: 1px solid rgba(0,0,0,0.06);
+  }
+  .plan li:first-child { border-top: 0; }
+  .plan li::before {
+    content: ""; position: absolute; left: 0; top: 14px; width: 16px; height: 16px;
+    border-radius: 50%; background: var(--yellow);
+  }
+  .plan li.lead-in { font-weight: 700; }
+  .plan .btn { width: 100%; }
+  .plan.top {
+    background: var(--black); color: var(--white); border-color: var(--black);
+    box-shadow: 0 28px 50px rgba(0,0,0,0.25);
+  }
+  .plan.top .alt { color: var(--yellow); }
+  .plan.top .for { color: rgba(255,255,255,0.55); }
+  .plan.top .price span { color: rgba(255,255,255,0.5); }
+  .plan.top .commit { background: rgba(255,255,255,0.12); color: var(--white); }
+  .plan.top li { border-color: rgba(255,255,255,0.12); }
+  .plan.top li::before { background: var(--yellow); }
+  .badge {
+    position: absolute; top: -14px; left: 28px; background: var(--yellow); color: var(--black);
+    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 0.75rem;
+    padding: 7px 14px; border-radius: 999px;
+  }
+  .plan-foot { text-align: center; margin-top: 40px; color: var(--gray-mid); font-size: 0.95rem; }
+
+  /* ── COMPARE ── */
+  .table-wrap {
+    overflow-x: auto; border: 1.5px solid rgba(0,0,0,0.08);
+    border-radius: var(--radius); background: var(--white);
+  }
+  table { width: 100%; border-collapse: collapse; min-width: 720px; font-size: 0.94rem; }
+  th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  th {
+    font-family: 'Syne', sans-serif; font-size: 1.05rem; background: var(--gray); font-weight: 700;
+  }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { font-weight: 600; }
+  td.yes { font-weight: 700; }
+  td.no { color: #b0a898; }
+  th.hl, td.hl { background: var(--yellow-light); }
+
+  /* ── WHO ── */
+  .who { background: var(--black); color: var(--white); }
+  .who .lede { color: rgba(255,255,255,0.55); }
+  .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+  .who-card {
+    border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 28px;
+  }
+  .who-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+  .who-card p { color: rgba(255,255,255,0.55); font-size: 0.95rem; }
+
+  /* ── FAQ ── */
+  .faq-list { max-width: 820px; margin-inline: auto; }
+  .faq-list details { border-bottom: 1px solid rgba(0,0,0,0.08); padding: 20px 0; }
+  .faq-list summary {
+    cursor: pointer; font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 700;
+    list-style: none; display: flex; justify-content: space-between; gap: 20px;
+  }
+  .faq-list summary::-webkit-details-marker { display: none; }
+  .faq-list summary::after { content: "+"; font-size: 1.5rem; line-height: 1; color: var(--orange); }
+  .faq-list details[open] summary::after { transform: rotate(45deg); }
+  .faq-list p { margin-top: 12px; color: var(--gray-mid); max-width: 64ch; }
+
+  /* ── CTA ── */
+  .cta {
+    background: var(--yellow); text-align: center; padding: 100px 0; position: relative; overflow: hidden;
+  }
+  .cta h2 {
+    font-size: clamp(2rem, 4.8vw, 3.4rem); max-width: 16ch; margin: 0 auto 18px;
+  }
+  .cta p { max-width: 48ch; margin: 0 auto 32px; color: rgba(0,0,0,0.65); font-size: 1.1rem; }
+  .cta .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--black); color: rgba(255,255,255,0.55); padding: 64px 0 28px; font-size: 0.95rem; }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 44px; }
+  footer h4 {
+    font-family: 'Syne', sans-serif; color: var(--yellow); font-size: 0.85rem;
+    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 16px;
+  }
+  footer ul { list-style: none; }
+  footer li { margin-bottom: 9px; }
+  footer a:hover { color: var(--white); }
+  .foot-brand .nav-logo { margin-bottom: 16px; }
+  .foot-brand .logo-text { color: var(--white); }
+  .foot-brand p { margin-top: 8px; max-width: 34ch; }
+  .foot-bar {
+    border-top: 1px solid rgba(255,255,255,0.1); padding-top: 22px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 0.88rem;
+  }
+
+  @media (max-width: 980px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 72px 0; }
+    .hero-in, .narr-grid { grid-template-columns: 1fr; gap: 40px; }
+    .post { margin-inline: auto; transform: none; }
+    .narr-side { position: static; }
+    .what-grid { grid-template-columns: 1fr 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; row-gap: 32px; }
+    .step::after { display: none; }
+    .plan-grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
+    .plan.top { transform: none; order: -1; }
+    .who-grid { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .what-grid, .steps, .foot-grid { grid-template-columns: 1fr; }
+    .f1, .f2 { display: none; }
+  }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
     <div class="logo-mark">B<div class="dot"></div></div>
@@ -811,170 +382,304 @@
         <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l4 4 4-4"/></svg>
       </button>
       <div class="dropdown">
-        <a href="corporate-video-shots.html">Corporate Video &amp; Shoots<span>Films, edits, motion graphics</span></a>
+        <a class="current" href="linkedin-marketing.html">LinkedIn Marketing &amp; Branding<span>Visibility, outreach, leads</span></a>
         <a href="social-media-marketing.html">Social Media, Marketing &amp; Branding<span>Content, identity, campaigns</span></a>
-        <a href="linkedin-marketing.html" class="current">LinkedIn Marketing &amp; Branding<span>Visibility, outreach, leads</span></a>
+        <a href="corporate-video-shots.html">Corporate Video &amp; Shoots<span>Films, edits, motion graphics</span></a>
       </div>
     </li>
     <li><a href="index.html#process">Process</a></li>
     <li><a href="index.html#why">Why Us</a></li>
     <li><a href="index.html#audience">Who We Serve</a></li>
   </ul>
-  <a href="index.html#contact" class="nav-cta">Let's Talk →</a>
+  <a href="#contact" class="nav-cta">Let's Talk →</a>
 </nav>
 
+<main id="top">
+
 <!-- HERO -->
-<section class="hero page-hero">
-  <div class="hero-bg-b">B</div>
-  <div class="hero-dot hero-dot-1"></div>
-  <div class="hero-dot hero-dot-2"></div>
-  <div class="hero-dot hero-dot-3"></div>
-  <div class="hero-content">
-    <div class="hero-badge"><span class="dot-badge"></span> Service 03 · LinkedIn Marketing & Branding</div>
-    <h1>LinkedIn Marketing<br>&amp; <em>Branding.</em></h1>
-    <p class="hero-sub">We build powerful LinkedIn presences for individuals and companies — optimising profiles, crafting thought-leadership content, and creating structured narrative journeys that attract the right opportunities.</p>
-  </div>
-</section>
-
-<!-- DETAIL -->
-<section class="detail">
-  <div class="detail-inner">
-    <div class="detail-copy reveal">
-      <div class="section-label">What This Service Covers</div>
-      <h2 class="section-title">Be known before<br>the first message</h2>
-      <p>We build powerful LinkedIn presences for individuals and companies — optimising profiles, crafting thought-leadership content, and creating structured narrative journeys that attract the right opportunities.</p>
-      <p>Your expertise becomes visible: a profile that backs it up, posts that teach, and a path from attention to conversations with the people who matter.</p>
-      <div class="detail-tags">
-        <span class="tag">Profile Optimisation</span>
-        <span class="tag">Thought Leadership</span>
-        <span class="tag">Company Pages</span>
-        <span class="tag">Lead Generation</span>
+<section class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <span class="tag"><i></i>LinkedIn Marketing &amp; Branding</span>
+      <h1>Be the name your buyers already trust before they ever message you.</h1>
+      <p class="lede">We turn founders, leaders and experts into visible, credible voices on LinkedIn. We write the content, design the posters, work your network and bring the right customers and partners to your inbox and calendar.</p>
+      <div class="hero-cta">
+        <a class="btn btn-black" href="#plans">See the plans</a>
+        <a class="btn btn-ghost" href="#contact">Book a call</a>
       </div>
+      <p class="hero-note">Three plans, from ₹20,000 to ₹60,000 per month.</p>
     </div>
-    <div class="offer-grid">
-      <div class="offer-card reveal">
-        <div class="offer-num">01</div>
-        <h3>Profile Optimisation</h3>
-        <p>Personal and company profiles rewritten and designed so buyers understand your expertise in under a minute.</p>
+    <div class="hero-visual" aria-hidden="true">
+      <span class="float f1"><i></i>New connection from your ideal client</span>
+      <div class="post">
+        <div class="post-head">
+          <div class="avatar"></div>
+          <div><b>Your name here</b><small>Founder · Your industry · 8:30 AM</small></div>
+        </div>
+        <p>The one lesson that changed how we win clients in our field, and how you can use it this quarter.</p>
+        <div class="poster"><h3>One idea. One clear takeaway.</h3><small>Motion poster</small></div>
+        <div class="post-actions"><span>Like</span><span>Comment</span><span>Repost</span><span>Send</span></div>
       </div>
-      <div class="offer-card reveal">
-        <div class="offer-num">02</div>
-        <h3>Thought Leadership</h3>
-        <p>Content in your voice that shows what you know — steady posting that turns silent experts into known ones.</p>
-      </div>
-      <div class="offer-card reveal">
-        <div class="offer-num">03</div>
-        <h3>Company Pages</h3>
-        <p>Page presence and narrative journeys that present the organisation with the same clarity as a flagship pitch.</p>
-      </div>
-      <div class="offer-card reveal">
-        <div class="offer-num">04</div>
-        <h3>Lead Generation</h3>
-        <p>Structured outreach and engagement so visibility becomes meetings, partnerships, and inbound opportunity.</p>
-      </div>
+      <span class="float f2"><i></i>Meeting booked on your calendar</span>
     </div>
   </div>
 </section>
 
-<!-- SCOPE -->
-<section class="scope">
-  <div class="section-label">How We Deliver It</div>
-  <h2 class="section-title">Built for this<br>service alone</h2>
-  <p class="scope-lede">A LinkedIn engagement built around presence, proof, and pipeline — not generic social posting.</p>
-  <div class="scope-grid">
-      <div class="scope-item reveal">
-        <h4>Profile</h4>
-        <p>We tighten how you show up so the right people trust you on first glance.</p>
-      </div>
-      <div class="scope-item reveal">
-        <h4>Publish</h4>
-        <p>Thought-leadership content that teaches, shares, and stays on-brand.</p>
-      </div>
-      <div class="scope-item reveal">
-        <h4>Engage</h4>
-        <p>Visibility around your ideal audience and their network.</p>
-      </div>
-      <div class="scope-item reveal">
-        <h4>Convert</h4>
-        <p>Conversations and lead paths that turn attention into real opportunities.</p>
-      </div>
+<!-- NARRATIVE -->
+<section class="narr" id="why-linkedin">
+  <div class="wrap narr-grid">
+    <div class="narr-side">
+      <h2>Your expertise is your best sales asset. Most people leave it invisible.</h2>
+      <a class="btn btn-black" href="#plans">Choose your plan</a>
+    </div>
+    <div class="narr-body">
+      <p class="big">Buyers research before they reach out. They open your LinkedIn profile, scroll your posts, and decide in under a minute whether you are the expert they need.</p>
+      <p>Most founders and senior professionals know their field deeply, yet their profile says very little about it. Posting is irregular, ideas stay in their heads, and the people who could become customers or partners never get a reason to remember them. That is a visibility problem, and it has a fix.</p>
+      <p>LinkedIn Marketing &amp; Branding at Blue Sky is a campaign built around you. We start with who you want to reach, your ideal customer profile (ICP), and then build a steady presence around them: content that shows what you know, a profile that backs it up, and active outreach that puts you in front of the right people.</p>
+
+      <h3>We make you the thought leader in your field</h3>
+      <p>Regular posting is what separates a known expert from a silent one. We write your content in your voice, design motion posters and visuals that stop the scroll, and publish at the times your audience is online. Over weeks, your profile starts to look like what it is: the home of someone who really knows the subject.</p>
+
+      <div class="pull">When the right people see you teach, share and show up every week, they stop asking whether to talk to you. They ask when.</div>
+
+      <h3>We build visibility around your ICP and their network</h3>
+      <p>Content alone doesn't reach everyone who matters. We connect with potential customers and partners in your target network, engage with their posts, and bring them to your profile, so the audience you are building is made of people who can actually buy, refer or collaborate.</p>
+
+      <h3>We turn attention into conversations and customers</h3>
+      <p>At the higher plans we go beyond posting. We reach out, start conversations, comment on the right profiles to pull in traction and impressions, and on our top plan, speak with prospects on your behalf and book meetings straight into your calendar. You get the outcome without living on LinkedIn yourself.</p>
+
+      <h3>We track what is working, so every month gets sharper</h3>
+      <p>On the Stratosphere plan we also track how leads are created and how you use them, so we know what to double down on next. Growth becomes a system you can learn from, not guesswork.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="what">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>What we do for your LinkedIn</h2>
+      <p class="lede">Four jobs, done together, so your profile works as one system.</p>
+    </div>
+    <div class="what-grid">
+      <div class="what-card"><div class="ic">✍️</div><h3>Content that sounds like you</h3><p>Posts written around your expertise, your point of view and the problems your buyers face.</p></div>
+      <div class="what-card"><div class="ic">🎞️</div><h3>Motion posters and visuals</h3><p>Designed creatives that make each post easy to notice, read and remember.</p></div>
+      <div class="what-card"><div class="ic">🤝</div><h3>Outreach and engagement</h3><p>We connect with your ICPs, engage with their content and bring them to your profile.</p></div>
+      <div class="what-card"><div class="ic">📈</div><h3>Leads and tracking</h3><p>Conversations, meetings and a clear view of where your leads are coming from.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>How a month with us runs</h2>
+      <p class="lede">The same story-first approach as the rest of Blue Sky, applied to your LinkedIn.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Understand your ICP</h3><p>We learn your expertise, your goals and exactly who you want to reach.</p></div>
+      <div class="step"><h3>Plan your story</h3><p>We set your content themes and the narrative your profile should tell.</p></div>
+      <div class="step"><h3>Create and publish</h3><p>We write, design and post on the schedule your plan includes.</p></div>
+      <div class="step"><h3>Engage and convert</h3><p>We reach out, engage and, on higher plans, turn interest into booked meetings.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans" id="plans">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Pick your altitude</h2>
+      <p class="lede">Every plan is run by the same team. The difference is how fast and how far you want to climb.</p>
+    </div>
+    <div class="plan-grid">
+
+      <article class="plan">
+        <div class="alt">Plan 1</div>
+        <h3>Horizon</h3>
+        <p class="for">Start showing up consistently and get your profile moving.</p>
+        <div class="price"><b>₹20,000</b><span>per month</span></div>
+        <span class="commit">Minimum 6 months</span>
+        <ul>
+          <li class="lead-in">3 posts every week</li>
+          <li>Content written for you, around your expertise</li>
+          <li>Motion posters and designed visuals</li>
+          <li>Posted at the right time for your audience</li>
+          <li>Steady rise in profile activity and engagement</li>
+        </ul>
+        <a class="btn btn-black" href="mailto:hello@bluesky.studio?subject=LinkedIn%20Marketing%20-%20Horizon%20plan">Start with Horizon</a>
+      </article>
+
+      <article class="plan">
+        <div class="alt">Plan 2</div>
+        <h3>Altitude</h3>
+        <p class="for">More content plus active outreach to grow your reach faster.</p>
+        <div class="price"><b>₹40,000</b><span>per month</span></div>
+        <span class="commit">Minimum 3 months</span>
+        <ul>
+          <li class="lead-in">5 posts every week</li>
+          <li>Written content and motion posters</li>
+          <li>Outreach to your ideal customers and partners</li>
+          <li>Engagement driven on your profile</li>
+          <li>Right-time posting for the best reach</li>
+        </ul>
+        <a class="btn btn-black" href="mailto:hello@bluesky.studio?subject=LinkedIn%20Marketing%20-%20Altitude%20plan">Start with Altitude</a>
+      </article>
+
+      <article class="plan top">
+        <span class="badge">Our most complete plan</span>
+        <div class="alt">Plan 3</div>
+        <h3>Stratosphere</h3>
+        <p class="for">A full growth program. We run LinkedIn end to end, you take the meetings.</p>
+        <div class="price"><b>₹60,000</b><span>per month</span></div>
+        <span class="commit">3-month growth program</span>
+        <ul>
+          <li class="lead-in">10 posts every week, two a day: morning and evening</li>
+          <li>Complete profile makeover so it looks its best</li>
+          <li>High-volume outreach to your ICPs, up to your account limits</li>
+          <li>Commenting on other profiles to bring comments, traction and impressions</li>
+          <li>We speak with prospects on your behalf and book meetings on your calendar</li>
+          <li>Lead tracking: see how leads are created and used, so we plan the next step</li>
+        </ul>
+        <a class="btn btn-yellow" href="mailto:hello@bluesky.studio?subject=LinkedIn%20Marketing%20-%20Stratosphere%20plan">Start with Stratosphere</a>
+      </article>
+
+    </div>
+    <p class="plan-foot">Not sure which plan fits? Tell us your goal and we will recommend one.</p>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Compare the plans</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Horizon</th><th>Altitude</th><th class="hl">Stratosphere</th></tr></thead>
+        <tbody>
+          <tr><td>Monthly price</td><td>₹20,000</td><td>₹40,000</td><td class="hl">₹60,000</td></tr>
+          <tr><td>Commitment</td><td>6 months minimum</td><td>3 months minimum</td><td class="hl">3-month program</td></tr>
+          <tr><td>Posts per week</td><td>3</td><td>5</td><td class="hl">10 (two a day)</td></tr>
+          <tr><td>Content writing and motion posters</td><td class="yes">Included</td><td class="yes">Included</td><td class="yes hl">Included</td></tr>
+          <tr><td>Posting at the right times</td><td class="yes">Included</td><td class="yes">Included</td><td class="yes hl">Included</td></tr>
+          <tr><td>Outreach to ICPs</td><td class="no">—</td><td class="yes">Included</td><td class="yes hl">High volume</td></tr>
+          <tr><td>Engagement on your profile</td><td class="yes">Included</td><td class="yes">Included</td><td class="yes hl">Maximum</td></tr>
+          <tr><td>Commenting on other profiles</td><td class="no">—</td><td class="no">—</td><td class="yes hl">Included</td></tr>
+          <tr><td>Complete profile makeover</td><td class="no">—</td><td class="no">—</td><td class="yes hl">Included</td></tr>
+          <tr><td>Conversations and meeting booking on your behalf</td><td class="no">—</td><td class="no">—</td><td class="yes hl">Included</td></tr>
+          <tr><td>Lead creation and usage tracking</td><td class="no">—</td><td class="no">—</td><td class="yes hl">Included</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section class="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Who this is for</h2>
+      <p class="lede">Anyone whose next client, partner or opportunity is likely to check LinkedIn first.</p>
+    </div>
+    <div class="who-grid">
+      <div class="who-card"><h3>Founders and CEOs</h3><p>Build authority that attracts customers, investors, partners and talent.</p></div>
+      <div class="who-card"><h3>Consultants and experts</h3><p>Turn deep knowledge into inbound enquiries instead of cold pitching.</p></div>
+      <div class="who-card"><h3>Sales and business leaders</h3><p>Open doors with decision makers by being known before the first message.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head" style="margin-inline:auto;text-align:center"><h2>Common questions</h2></div>
+    <div class="faq-list">
+      <details>
+        <summary>Why do the plans have minimum commitments?</summary>
+        <p>LinkedIn growth compounds. A profile needs consistent posting and engagement over time to build real traction, so Horizon needs 6 months, while Altitude and Stratosphere need 3 months to show considerable growth.</p>
+      </details>
+      <details>
+        <summary>What is the difference between the plans?</summary>
+        <p>Horizon builds your content presence. Altitude adds more posts and active outreach. Stratosphere runs LinkedIn end to end: daily posting, profile makeover, outreach, commenting, conversations on your behalf, meeting booking and lead tracking.</p>
+      </details>
+      <details>
+        <summary>Do I have to be active on LinkedIn myself?</summary>
+        <p>Not on the Stratosphere plan. We handle posting, outreach, engagement and conversations, and book meetings straight into your calendar so you only need to show up for them.</p>
+      </details>
+      <details>
+        <summary>What do you track?</summary>
+        <p>On Stratosphere, we track how leads are created and how you use them, so each month we know what to repeat and what to change.</p>
+      </details>
+    </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-band" id="contact">
-  <div class="cta-band-bg">LET'S BUILD</div>
-  <div class="section-label">Ready to Begin?</div>
-  <h2>Ready to own your LinkedIn presence?<br><em>Right Here.</em></h2>
-  <a href="mailto:hello@bluesky.studio" class="btn-primary">Start Your Project →</a>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="nav-logo" style="margin-bottom:20px;">
-        <div class="logo-mark">B<div class="dot"></div></div>
-        <div class="logo-text" style="color:white;">BLUE SKY<span>Creative Partner</span></div>
-      </div>
-      <p>Your ultimate branding partner. We tell powerful stories through design, video, and content that generate real results.</p>
-    </div>
-    <div class="footer-col">
-      <h6>Services</h6>
-      <ul>
-        <li><a href="corporate-video-shots.html">Corporate Video &amp; Shoots</a></li>
-        <li><a href="social-media-marketing.html">Social Media Marketing</a></li>
-        <li><a href="linkedin-marketing.html">LinkedIn Marketing</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h6>Company</h6>
-      <ul>
-        <li><a href="index.html#about">About Us</a></li>
-        <li><a href="index.html#process">Our Process</a></li>
-        <li><a href="index.html#why">Why Blue Sky</a></li>
-        <li><a href="index.html#audience">Who We Serve</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h6>Connect</h6>
-      <ul>
-        <li><a href="#">LinkedIn</a></li>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">YouTube</a></li>
-        <li><a href="mailto:hello@bluesky.studio">hello@bluesky.studio</a></li>
-      </ul>
-      <div class="social-row" style="margin-top:20px;">
-        <a class="social-btn" href="#">in</a>
-        <a class="social-btn" href="#">▶</a>
-        <a class="social-btn" href="#">◉</a>
-      </div>
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2>Ready to be the expert everyone in your market knows?</h2>
+    <p>Tell us who you want to reach. We will suggest the plan that gets you there.</p>
+    <div class="btn-row">
+      <a class="btn btn-black" href="mailto:hello@bluesky.studio?subject=LinkedIn%20Marketing%20enquiry">Start your LinkedIn growth</a>
+      <a class="btn btn-ghost" href="#plans">Review the plans</a>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2025 <em>Blue Sky Creative Partner</em>. All rights reserved.</span>
-    <span>Always <em>Storytelling.</em></span>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="nav-logo" href="index.html">
+          <div class="logo-mark">B<div class="dot"></div></div>
+          <div class="logo-text">BLUE SKY<span>Creative Partner</span></div>
+        </a>
+        <p>Your ultimate branding partner. We tell powerful stories through design, video and content that generate real results.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="corporate-video-shots.html">Corporate Video &amp; Shoots</a></li>
+          <li><a href="social-media-marketing.html">Social Media Marketing</a></li>
+          <li><a href="linkedin-marketing.html">LinkedIn Marketing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html#about">About us</a></li>
+          <li><a href="index.html#process">Our process</a></li>
+          <li><a href="index.html#why">Why Blue Sky</a></li>
+          <li><a href="index.html#audience">Who we serve</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:hello@bluesky.studio">hello@bluesky.studio</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bar">
+      <span>© 2026 Blue Sky Creative Partner. All rights reserved.</span>
+      <span>Always storytelling.</span>
+    </div>
   </div>
 </footer>
 
 <script>
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-
   window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
     nav.style.padding = window.scrollY > 50 ? '12px 60px' : '20px 60px';
   });
-
   (function(){
     var dd = document.getElementById('dd');
     if (!dd) return;
