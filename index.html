@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blue Sky — Creative Partner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #F5B800;
+    --yellow-dark: #E0A800;
+    --yellow-light: #FFF3B0;
+    --orange: #F07020;
+    --black: #111010;
+    --white: #FFFFFF;
+    --gray: #F7F5F0;
+    --gray-mid: #888070;
+    --section-gap: 120px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    transition: padding 0.3s;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px; text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 44px; height: 44px;
+    background: var(--yellow);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--white);
+    letter-spacing: -2px;
+  }
+
+  .logo-mark .dot {
+    position: absolute; top: 5px; left: 8px;
+    width: 7px; height: 7px;
+    background: var(--orange);
+    border-radius: 50%;
+  }
+
+  .logo-text {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.15;
+    color: var(--black);
+  }
+
+  .logo-text span {
+    display: block;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gray-mid);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px; font-weight: 500;
+    color: var(--black); text-decoration: none;
+    letter-spacing: 0.3px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--orange); }
+
+  .nav-cta {
+    background: var(--yellow);
+    color: var(--black);
+    border: none; cursor: pointer;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 13px;
+    padding: 10px 22px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .nav-cta:hover { background: var(--orange); color: var(--white); transform: scale(1.03); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--yellow);
+    display: flex; align-items: center;
+    padding: 140px 60px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-b {
+    position: absolute; right: -60px; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(300px, 40vw, 600px);
+    color: rgba(255,255,255,0.18);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    animation: floatB 6s ease-in-out infinite;
+  }
+
+  @keyframes floatB {
+    0%,100% { transform: translateY(-50%) translateX(0); }
+    50% { transform: translateY(-52%) translateX(-10px); }
+  }
+
+  .hero-dot {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--orange);
+    opacity: 0.7;
+  }
+
+  .hero-dot-1 { width: 18px; height: 18px; top: 18%; left: 12%; animation: pulse 3s ease-in-out infinite; }
+  .hero-dot-2 { width: 10px; height: 10px; top: 65%; left: 8%; animation: pulse 4s ease-in-out infinite 1s; }
+  .hero-dot-3 { width: 26px; height: 26px; bottom: 20%; right: 35%; animation: pulse 3.5s ease-in-out infinite 0.5s; }
+
+  @keyframes pulse {
+    0%,100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.3); opacity: 1; }
+  }
+
+  .hero-content { max-width: 700px; position: relative; z-index: 2; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-badge .dot-badge { width: 6px; height: 6px; background: var(--orange); border-radius: 50%; }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height: 0.95;
+    color: var(--black);
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease 0.15s both;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--white);
+    -webkit-text-stroke: 2px var(--black);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(0,0,0,0.7);
+    max-width: 480px;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+
+  .hero-ctas {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.45s both;
+  }
+
+  .btn-primary {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 14px;
+    padding: 16px 36px; border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.2s, background 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-primary:hover { background: var(--orange); transform: translateY(-2px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--black);
+    font-family: 'Syne', sans-serif;
+    font-weight: 600; font-size: 14px;
+    padding: 16px 36px; border-radius: 50px;
+    text-decoration: none;
+    border: 2px solid var(--black);
+    transition: transform 0.2s, background 0.2s, color 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-secondary:hover { background: var(--black); color: var(--white); transform: translateY(-2px); }
+
+  /* ── MARQUEE ── */
+  .marquee-section {
+    background: var(--black);
+    padding: 18px 0;
+    overflow: hidden;
+  }
+
+  .marquee-track {
+    display: flex; gap: 0;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+
+  .marquee-item {
+    display: inline-flex; align-items: center; gap: 24px;
+    padding: 0 32px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--yellow);
+  }
+
+  .marquee-item .sep { color: var(--orange); font-size: 18px; }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: var(--section-gap) 60px; }
+
+  .section-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block; width: 24px; height: 2px;
+    background: var(--orange);
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.05;
+    color: var(--black);
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--gray); }
+
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+
+  .about-left .section-title { margin-bottom: 28px; }
+
+  .about-left p {
+    font-size: 16px; line-height: 1.8;
+    color: #555;
+    margin-bottom: 16px;
+  }
+
+  .about-motto {
+    margin-top: 36px;
+    background: var(--yellow);
+    border-radius: 20px;
+    padding: 28px 32px;
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+
+  .motto-icon {
+    font-size: 32px; flex-shrink: 0; margin-top: 2px;
+  }
+
+  .about-motto strong {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .about-motto p { font-size: 14px; color: rgba(0,0,0,0.65); margin: 0; }
+
+  .about-right {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .stat-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.06);
+    transition: transform 0.2s;
+  }
+
+  .stat-card:hover { transform: translateY(-4px); }
+
+  .stat-card:first-child { background: var(--black); color: var(--white); }
+
+  .stat-card .num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 52px;
+    line-height: 1;
+    color: var(--yellow);
+  }
+
+  .stat-card:not(:first-child) .num { color: var(--black); }
+
+  .stat-card .lbl {
+    font-size: 13px; font-weight: 500;
+    margin-top: 8px;
+    opacity: 0.7;
+  }
+
+  /* ── SERVICES ── */
+  .services-header {
+    text-align: center;
+    margin-bottom: 70px;
+  }
+
+  .services-header .section-label { justify-content: center; }
+  .services-header .section-label::before { display: none; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .service-card {
+    border-radius: 28px;
+    padding: 48px 36px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s;
+    cursor: default;
+  }
+
+  .service-card:hover { transform: translateY(-8px); }
+
+  .service-card.card-yellow { background: var(--yellow); }
+  .service-card.card-black { background: var(--black); color: var(--white); }
+  .service-card.card-outline { background: var(--white); border: 2px solid var(--black); }
+
+  .card-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 80px;
+    line-height: 1;
+    opacity: 0.12;
+    position: absolute; top: 20px; right: 24px;
+  }
+
+  .card-icon {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    margin-bottom: 28px;
+  }
+
+  .card-yellow .card-icon { background: rgba(0,0,0,0.12); }
+  .card-black .card-icon { background: rgba(255,255,255,0.1); }
+  .card-outline .card-icon { background: var(--yellow); }
+
+  .service-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .service-card p {
+    font-size: 15px; line-height: 1.7;
+    opacity: 0.75;
+    margin-bottom: 28px;
+  }
+
+  .service-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+
+  .tag {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 5px 12px;
+    border-radius: 50px;
+  }
+
+  .card-yellow .tag { background: rgba(0,0,0,0.1); color: var(--black); }
+  .card-black .tag { background: rgba(255,255,255,0.12); color: var(--white); }
+  .card-outline .tag { background: var(--yellow); color: var(--black); }
+
+  /* ── HOW WE WORK ── */
+  .process { background: var(--black); color: var(--white); }
+  .process .section-title { color: var(--white); margin-bottom: 64px; }
+  .process .section-label { color: var(--yellow); }
+
+  .process-header { margin-bottom: 64px; }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .step {
+    padding: 36px 30px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+  }
+
+  .step:last-child { border-right: none; }
+
+  .step-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--yellow);
+    margin-bottom: 24px;
+  }
+
+  .step h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 20px;
+    margin-bottom: 14px;
+    color: var(--white);
+  }
+
+  .step p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.55); }
+
+  /* ── WHY US ── */
+  .why { background: var(--gray); }
+
+  .why-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .why-left .section-title { margin-bottom: 20px; }
+  .why-left > p { font-size: 16px; line-height: 1.8; color: #666; margin-bottom: 40px; }
+
+  .why-visual {
+    background: var(--yellow);
+    border-radius: 28px;
+    padding: 48px;
+    text-align: center;
+  }
+
+  .why-visual-b {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 140px;
+    line-height: 1;
+    color: var(--white);
+    position: relative;
+    display: inline-block;
+  }
+
+  .why-visual-b .odot {
+    position: absolute; top: 10px; left: 20px;
+    width: 22px; height: 22px;
+    background: var(--orange);
+    border-radius: 50%;
+  }
+
+  .why-visual p {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 12px;
+    color: var(--black);
+  }
+
+  .pillars {
+    display: flex; flex-direction: column; gap: 20px;
+  }
+
+  .pillar {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 24px 28px;
+    display: flex; align-items: flex-start; gap: 18px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+  }
+
+  .pillar:hover { transform: translateX(6px); }
+
+  .pillar-icon {
+    width: 46px; height: 46px; flex-shrink: 0;
+    background: var(--yellow);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+
+  .pillar h5 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .pillar p { font-size: 13px; color: #777; line-height: 1.6; }
+
+  /* ── WHO WE SERVE ── */
+  .audience {
+    background: var(--white);
+  }
+
+  .audience-header { text-align: center; margin-bottom: 64px; }
+  .audience-header .section-label { justify-content: center; }
+  .audience-header .section-label::before { display: none; }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .aud-card {
+    border-radius: 24px;
+    padding: 36px 24px;
+    text-align: center;
+    border: 1.5px solid rgba(0,0,0,0.08);
+    transition: all 0.2s;
+    cursor: default;
+  }
+
+  .aud-card:hover {
+    border-color: var(--yellow);
+    background: var(--yellow-light);
+    transform: translateY(-4px);
+  }
+
+  .aud-icon { font-size: 40px; margin-bottom: 16px; }
+
+  .aud-card h4 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 17px;
+    margin-bottom: 8px;
+  }
+
+  .aud-card p { font-size: 13px; color: #777; line-height: 1.6; }
+
+  /* ── CTA BAND ── */
+  .cta-band {
+    background: var(--yellow);
+    padding: 100px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-band-bg {
+    position: absolute; bottom: -60px; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 220px;
+    color: rgba(0,0,0,0.05);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .cta-band .section-label { justify-content: center; color: var(--black); }
+  .cta-band .section-label::before { display: none; }
+
+  .cta-band h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 1.05;
+    color: var(--black);
+    margin: 20px 0 36px;
+  }
+
+  .cta-band h2 em {
+    font-style: normal;
+    color: var(--white);
+    -webkit-text-stroke: 2px var(--black);
+  }
+
+  .cta-band .btn-primary {
+    font-size: 15px;
+    padding: 18px 48px;
+    background: var(--black);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 70px 60px 40px;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+
+  .footer-brand .logo-mark { margin-bottom: 20px; }
+  .footer-brand p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); max-width: 260px; }
+
+  .footer-col h6 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 13px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 20px;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 12px; }
+  .footer-col a {
+    font-size: 14px; color: rgba(255,255,255,0.55);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--white); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 30px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 13px; color: rgba(255,255,255,0.35);
+  }
+
+  .footer-bottom span em { color: var(--yellow); font-style: normal; }
+
+  .social-row { display: flex; gap: 14px; }
+  .social-btn {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; cursor: pointer;
+    transition: background 0.2s;
+    text-decoration: none;
+    color: var(--white);
+  }
+  .social-btn:hover { background: var(--yellow); color: var(--black); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 80px 24px; }
+    .hero { padding: 120px 24px 60px; }
+    .hero-bg-b { font-size: 200px; right: -20px; }
+    .about-inner, .why-inner { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .audience-grid { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .cta-band { padding: 70px 24px; }
+    footer { padding: 60px 24px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">B<div class="dot"></div></div>
+    <div class="logo-text">BLUE SKY<span>Creative Partner</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#audience">Who We Serve</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's Talk →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-b">B</div>
+  <div class="hero-dot hero-dot-1"></div>
+  <div class="hero-dot hero-dot-2"></div>
+  <div class="hero-dot hero-dot-3"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot-badge"></span> Your Ultimate Branding Partner</div>
+    <h1>We Don't Just Brand.<br>We Tell <em>Stories.</em></h1>
+    <p class="hero-sub">Blue Sky Creative Partner crafts brand narratives that captivate, convert, and elevate — through video, social media, and LinkedIn marketing that truly moves people.</p>
+    <div class="hero-ctas">
+      <a href="#services" class="btn-primary">Explore Our Work</a>
+      <a href="#contact" class="btn-secondary">Start a Project</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">Corporate Video Edits <span class="sep">✦</span></div>
+    <div class="marquee-item">Brand Storytelling <span class="sep">✦</span></div>
+    <div class="marquee-item">LinkedIn Marketing <span class="sep">✦</span></div>
+    <div class="marquee-item">Social Media Branding <span class="sep">✦</span></div>
+    <div class="marquee-item">Video Production <span class="sep">✦</span></div>
+    <div class="marquee-item">Lead Generation <span class="sep">✦</span></div>
+    <div class="marquee-item">Profile Building <span class="sep">✦</span></div>
+    <div class="marquee-item">Content Strategy <span class="sep">✦</span></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee-item">Corporate Video Edits <span class="sep">✦</span></div>
+    <div class="marquee-item">Brand Storytelling <span class="sep">✦</span></div>
+    <div class="marquee-item">LinkedIn Marketing <span class="sep">✦</span></div>
+    <div class="marquee-item">Social Media Branding <span class="sep">✦</span></div>
+    <div class="marquee-item">Video Production <span class="sep">✦</span></div>
+    <div class="marquee-item">Lead Generation <span class="sep">✦</span></div>
+    <div class="marquee-item">Profile Building <span class="sep">✦</span></div>
+    <div class="marquee-item">Content Strategy <span class="sep">✦</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-left reveal">
+      <div class="section-label">Who We Are</div>
+      <h2 class="section-title">A Studio Built on<br>Bold Ideas</h2>
+      <p>Blue Sky Creative Partner is a full-spectrum creative agency that transforms how brands present themselves to the world. We believe every brand has a unique story — and we're here to tell it with clarity, creativity, and purpose.</p>
+      <p>From polished corporate videos to razor-sharp social content, we design communication that doesn't just look good — it works. Our approach combines strategic thinking with stunning execution.</p>
+      <div class="about-motto">
+        <div class="motto-icon">✦</div>
+        <div>
+          <strong>Always Storytelling.</strong>
+          <p>Our philosophy is simple — every post, every frame, every design element is a chapter in your brand's story. We navigate that story with intent.</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-right reveal">
+      <div class="stat-card">
+        <div class="num">150+</div>
+        <div class="lbl">Brands Transformed</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">3×</div>
+        <div class="lbl">Avg. Lead Growth</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">500+</div>
+        <div class="lbl">Videos Produced</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">98%</div>
+        <div class="lbl">Client Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header reveal">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Three Pillars of<br>Creative Excellence</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card card-yellow reveal">
+      <div class="card-num">01</div>
+      <div class="card-icon">🎬</div>
+      <h3>Corporate Video<br>& Shoots</h3>
+      <p>From concept to camera to cut — we produce corporate films, promotional videos, and documentary-style shoots that elevate your brand perception and make lasting impressions.</p>
+      <div class="service-tags">
+        <span class="tag">Video Editing</span>
+        <span class="tag">Video Production</span>
+        <span class="tag">Shoots</span>
+        <span class="tag">Motion Graphics</span>
+      </div>
+    </div>
+    <div class="service-card card-black reveal">
+      <div class="card-num">02</div>
+      <div class="card-icon">📱</div>
+      <h3>Social Media,<br>Marketing & Branding</h3>
+      <p>We craft scroll-stopping content, build cohesive brand identities, and run data-driven social campaigns that grow your audience and generate real, high-quality leads.</p>
+      <div class="service-tags">
+        <span class="tag">Content Strategy</span>
+        <span class="tag">Brand Identity</span>
+        <span class="tag">Poster Design</span>
+        <span class="tag">Campaign Management</span>
+      </div>
+    </div>
+    <div class="service-card card-outline reveal">
+      <div class="card-num">03</div>
+      <div class="card-icon">💼</div>
+      <h3>LinkedIn Marketing<br>& Branding</h3>
+      <p>We build powerful LinkedIn presences for individuals and companies — optimising profiles, crafting thought-leadership content, and creating structured narrative journeys that attract the right opportunities.</p>
+      <div class="service-tags">
+        <span class="tag">Profile Optimisation</span>
+        <span class="tag">Thought Leadership</span>
+        <span class="tag">Company Pages</span>
+        <span class="tag">Lead Generation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="process-header reveal">
+    <div class="section-label">How We Work</div>
+    <h2 class="section-title">Our Story-First<br>Creative Process</h2>
+  </div>
+  <div class="process-steps">
+    <div class="step reveal">
+      <div class="step-num">01 — Discover</div>
+      <h4>Brand Deep-Dive</h4>
+      <p>We start by understanding your goals, your audience, and the story your brand needs to tell. Every great narrative begins with listening.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">02 — Craft</div>
+      <h4>Story Architecture</h4>
+      <p>We structure your brand narrative — defining the arc, the tone, and the content pillars that will guide every piece of communication.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03 — Create</div>
+      <h4>Produce & Design</h4>
+      <p>Our creative team brings the story to life through video, design, and content — each element crafted with precision and purpose.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">04 — Amplify</div>
+      <h4>Distribute & Grow</h4>
+      <p>We publish, promote, and optimise your content — tracking what works and continuously refining to maximise impact and lead generation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <div class="why-left reveal">
+      <div class="section-label">Why Blue Sky</div>
+      <h2 class="section-title">More Than a<br>Creative Agency</h2>
+      <p>We are your long-term creative partner. We don't just deliver deliverables — we embed ourselves in your brand journey and grow with you.</p>
+      <div class="why-visual">
+        <div class="why-visual-b"><div class="odot"></div>B</div>
+        <p>Blue Sky Creative Partner</p>
+      </div>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="pillar-icon">📖</div>
+        <div>
+          <h5>Storytelling at the Core</h5>
+          <p>Every output is a narrative chapter. We don't just design or shoot — we tell your story with structure and emotional resonance.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🎯</div>
+        <div>
+          <h5>Lead Generation Focus</h5>
+          <p>Beautiful content means nothing without results. We build for conversion — attracting high-potential leads for your business or personal brand.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🧩</div>
+        <div>
+          <h5>Cohesive Brand Systems</h5>
+          <p>From your LinkedIn to your reels to your corporate deck — we ensure your brand speaks in one consistent, powerful voice everywhere.</p>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🚀</div>
+        <div>
+          <h5>End-to-End Execution</h5>
+          <p>Strategy, creation, and distribution — all under one roof. No juggling vendors. One partner, complete ownership of your brand story.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="audience" id="audience">
+  <div class="audience-header reveal">
+    <div class="section-label">Who We Serve</div>
+    <h2 class="section-title">Built for Every<br>Ambitious Brand</h2>
+  </div>
+  <div class="audience-grid">
+    <div class="aud-card reveal">
+      <div class="aud-icon">🏢</div>
+      <h4>Corporates & Enterprises</h4>
+      <p>Elevate internal and external communications with world-class video and brand strategy.</p>
+    </div>
+    <div class="aud-card reveal">
+      <div class="aud-icon">🚀</div>
+      <h4>Startups & Scale-ups</h4>
+      <p>Build brand authority from the ground up and attract investors, customers, and talent.</p>
+    </div>
+    <div class="aud-card reveal">
+      <div class="aud-icon">👤</div>
+      <h4>Personal Brands</h4>
+      <p>Founders, executives, and thought leaders building their influence and industry presence.</p>
+    </div>
+    <div class="aud-card reveal">
+      <div class="aud-icon">💡</div>
+      <h4>Freelancers & Creators</h4>
+      <p>Stand out in competitive markets with a sharp, story-driven brand that converts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band" id="contact">
+  <div class="cta-band-bg">LET'S BUILD</div>
+  <div class="section-label">Ready to Begin?</div>
+  <h2>Your Brand Story<br>Starts <em>Right Here.</em></h2>
+  <a href="mailto:hello@bluesky.studio" class="btn-primary">Start Your Project →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:20px;">
+        <div class="logo-mark">B<div class="dot"></div></div>
+        <div class="logo-text" style="color:white;">BLUE SKY<span>Creative Partner</span></div>
+      </div>
+      <p>Your ultimate branding partner. We tell powerful stories through design, video, and content that generate real results.</p>
+    </div>
+    <div class="footer-col">
+      <h6>Services</h6>
+      <ul>
+        <li><a href="#services">Corporate Video</a></li>
+        <li><a href="#services">Video Shoots</a></li>
+        <li><a href="#services">Social Media Marketing</a></li>
+        <li><a href="#services">Brand Identity</a></li>
+        <li><a href="#services">LinkedIn Marketing</a></li>
+        <li><a href="#services">Lead Generation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h6>Company</h6>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#process">Our Process</a></li>
+        <li><a href="#why">Why Blue Sky</a></li>
+        <li><a href="#audience">Who We Serve</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h6>Connect</h6>
+      <ul>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">YouTube</a></li>
+        <li><a href="mailto:hello@bluesky.studio">hello@bluesky.studio</a></li>
+      </ul>
+      <div class="social-row" style="margin-top:20px;">
+        <a class="social-btn" href="#">in</a>
+        <a class="social-btn" href="#">▶</a>
+        <a class="social-btn" href="#">◉</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 <em>Blue Sky Creative Partner</em>. All rights reserved.</span>
+    <span>Always <em>Storytelling.</em></span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav shrink on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    nav.style.padding = window.scrollY > 50 ? '12px 60px' : '20px 60px';
+  });
+</script>
+</body>
+</html>
