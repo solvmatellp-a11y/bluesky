@@ -110,6 +110,20 @@
 
   .nav-cta:hover { background: var(--orange); color: var(--white); transform: scale(1.03); }
 
+  .nav-burger {
+    display: none;
+    background: none; border: 0; padding: 8px; cursor: pointer;
+    flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+    width: 44px; height: 44px; flex-shrink: 0;
+  }
+  .nav-burger span {
+    display: block; width: 22px; height: 2px; background: var(--black);
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
@@ -710,7 +724,30 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
-    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .nav-cta { display: none; }
+    .nav-links {
+      display: none;
+      position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; align-items: stretch; gap: 0;
+      padding: 8px 20px 20px;
+      background: rgba(255,255,255,0.98);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.08);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links > li { width: 100%; }
+    .nav-links > li > a,
+    .nav-links .dd-btn {
+      width: 100%; padding: 14px 4px; justify-content: space-between; box-sizing: border-box;
+    }
+    .dropdown {
+      position: static; opacity: 1; visibility: visible; transform: none;
+      box-shadow: none; border: 0; min-width: 0; padding: 0 0 8px 8px; display: none;
+    }
+    .has-dd.open .dropdown { display: block; }
+    .has-dd:hover .dropdown { display: none; }
+    .has-dd.open:hover .dropdown { display: block; }
     section { padding: 80px 24px; }
     .hero { padding: 120px 24px 60px; }
     .hero-bg-b { font-size: 200px; right: -20px; }
@@ -804,7 +841,7 @@
     <div class="logo-mark">B<div class="dot"></div></div>
     <div class="logo-text">BLUE SKY<span>Creative Partner</span></div>
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navMenu">
     <li><a href="index.html#about">About</a></li>
     <li class="has-dd" id="dd">
       <button class="dd-btn" aria-expanded="false" aria-haspopup="true">Services
@@ -821,6 +858,9 @@
     <li><a href="index.html#audience">Who We Serve</a></li>
   </ul>
   <a href="index.html#contact" class="nav-cta">Let's Talk →</a>
+  <button class="nav-burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -972,21 +1012,56 @@
 
   window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
-    nav.style.padding = window.scrollY > 50 ? '12px 60px' : '20px 60px';
+    if (window.matchMedia('(max-width: 900px)').matches) {
+      nav.style.padding = window.scrollY > 50 ? '12px 16px' : '16px 16px';
+    } else {
+      nav.style.padding = window.scrollY > 50 ? '12px 60px' : '20px 60px';
+    }
   });
 
   (function(){
+    var burger = document.getElementById('navBurger');
+    var menu = document.getElementById('navMenu');
     var dd = document.getElementById('dd');
-    if (!dd) return;
-    var btn = dd.querySelector('.dd-btn');
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      var open = dd.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open);
-    });
+    var btn = dd ? dd.querySelector('.dd-btn') : null;
+
+    if (burger && menu) {
+      burger.addEventListener('click', function(e){
+        e.stopPropagation();
+        var open = menu.classList.toggle('open');
+        burger.setAttribute('aria-expanded', open);
+        burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      });
+      menu.addEventListener('click', function(e){ e.stopPropagation(); });
+      menu.querySelectorAll('a').forEach(function(link){
+        link.addEventListener('click', function(){
+          menu.classList.remove('open');
+          burger.setAttribute('aria-expanded', 'false');
+          burger.setAttribute('aria-label', 'Open menu');
+        });
+      });
+    }
+
+    if (dd && btn) {
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var open = dd.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+    }
+
     document.addEventListener('click', function(){
-      dd.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
+      if (menu) {
+        menu.classList.remove('open');
+        if (burger) {
+          burger.setAttribute('aria-expanded', 'false');
+          burger.setAttribute('aria-label', 'Open menu');
+        }
+      }
+      if (dd && btn) {
+        dd.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
     });
   })();
 </script>
