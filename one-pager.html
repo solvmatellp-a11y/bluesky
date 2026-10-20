@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blue Sky Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --yellow: #F5B800;
+    --orange: #F07020;
+    --black: #111010;
+    --white: #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  .slide {
+    width: min(1120px, 100%);
+    aspect-ratio: 16 / 9;
+    background: var(--yellow);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(36px, 5vw, 64px) clamp(40px, 5.5vw, 72px);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+  }
+
+  .slide-bg {
+    position: absolute;
+    right: -4%;
+    bottom: -18%;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(220px, 42vw, 480px);
+    line-height: 0.8;
+    color: rgba(255,255,255,0.16);
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.04em;
+  }
+
+  .top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .mark {
+    width: 42px;
+    height: 42px;
+    background: var(--black);
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--yellow);
+    letter-spacing: -1px;
+  }
+
+  .mark .dot {
+    position: absolute;
+    top: 5px;
+    left: 7px;
+    width: 6px;
+    height: 6px;
+    background: var(--orange);
+    border-radius: 50%;
+  }
+
+  .brand-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  .brand-name span {
+    display: block;
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: rgba(0,0,0,0.55);
+    margin-top: 2px;
+  }
+
+  .motto {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.55);
+  }
+
+  .center {
+    position: relative;
+    z-index: 1;
+    max-width: 14ch;
+  }
+
+  .center h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(48px, 7.2vw, 92px);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    margin-bottom: 22px;
+  }
+
+  .center h1 em {
+    font-style: normal;
+    color: var(--white);
+    -webkit-text-stroke: 2px var(--black);
+  }
+
+  .tagline {
+    font-size: clamp(15px, 1.6vw, 18px);
+    font-weight: 300;
+    line-height: 1.5;
+    color: rgba(0,0,0,0.68);
+    max-width: 28ch;
+  }
+
+  .bottom {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .services {
+    display: flex;
+    gap: clamp(20px, 3vw, 40px);
+    flex-wrap: wrap;
+  }
+
+  .services span {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.72);
+    position: relative;
+    padding-left: 14px;
+  }
+
+  .services span::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--orange);
+  }
+
+  .contact {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--black);
+    text-decoration: none;
+    border-bottom: 1.5px solid rgba(0,0,0,0.35);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+
+  .contact:hover { border-color: var(--black); }
+
+  @media (max-width: 720px) {
+    body { padding: 12px; align-items: stretch; }
+    .slide {
+      aspect-ratio: auto;
+      min-height: calc(100vh - 24px);
+      border-radius: 8px;
+      padding: 32px 28px;
+    }
+    .top { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .center { max-width: none; }
+    .bottom { flex-direction: column; align-items: flex-start; gap: 28px; }
+    .services { flex-direction: column; gap: 12px; }
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .slide {
+      width: 100%;
+      height: 100vh;
+      box-shadow: none;
+      border-radius: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="slide" role="img" aria-label="Blue Sky Studio one-pager">
+  <div class="slide-bg" aria-hidden="true">B</div>
+
+  <div class="top">
+    <div class="brand">
+      <div class="mark">B<span class="dot"></span></div>
+      <div class="brand-name">Blue Sky Studio<span>Creative Partner</span></div>
+    </div>
+    <div class="motto">Always Storytelling</div>
+  </div>
+
+  <div class="center">
+    <h1>We Tell<br><em>Stories.</em></h1>
+    <p class="tagline">Brand narratives through video, social, and LinkedIn.</p>
+  </div>
+
+  <div class="bottom">
+    <div class="services">
+      <span>Corporate Video</span>
+      <span>Social Media</span>
+      <span>LinkedIn</span>
+    </div>
+    <a class="contact" href="mailto:hello@bluesky.studio">hello@bluesky.studio</a>
+  </div>
+</div>
+
+</body>
+</html>

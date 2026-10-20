@@ -95,6 +95,36 @@
 
   .nav-links a:hover { color: var(--orange); }
 
+  .has-dd { position: relative; }
+  .dd-btn {
+    font: inherit; font-size: 14px; font-weight: 500;
+    color: var(--black); background: none; border: 0; cursor: pointer;
+    letter-spacing: 0.3px; padding: 0; display: inline-flex; align-items: center; gap: 6px;
+    transition: color 0.2s;
+  }
+  .dd-btn:hover, .has-dd:hover .dd-btn, .has-dd.open .dd-btn { color: var(--orange); }
+  .dd-btn svg { width: 10px; height: 10px; transition: transform 0.2s; }
+  .has-dd:hover .dd-btn svg, .has-dd.open .dd-btn svg, .has-dd:focus-within .dd-btn svg { transform: rotate(180deg); }
+  .dropdown {
+    position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%) translateY(6px);
+    min-width: 280px; background: var(--white);
+    border: 1px solid rgba(0,0,0,0.08); border-radius: 16px;
+    padding: 8px; box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+    opacity: 0; visibility: hidden; transition: opacity 0.18s, transform 0.18s, visibility 0.18s;
+    z-index: 120;
+  }
+  .has-dd:hover .dropdown, .has-dd.open .dropdown, .has-dd:focus-within .dropdown {
+    opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+  }
+  .dropdown a {
+    display: block; padding: 12px 14px; border-radius: 12px;
+    font-size: 14px; font-weight: 600; color: var(--black); text-decoration: none;
+  }
+  .dropdown a span {
+    display: block; font-weight: 400; font-size: 12px; color: var(--gray-mid); margin-top: 2px;
+  }
+  .dropdown a:hover { background: var(--yellow-light); color: var(--black); }
+
   .nav-cta {
     background: var(--yellow);
     color: var(--black);
@@ -378,7 +408,10 @@
     position: relative;
     overflow: hidden;
     transition: transform 0.3s;
-    cursor: default;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
   }
 
   .service-card:hover { transform: translateY(-8px); }
@@ -728,13 +761,22 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <div class="logo-mark">B<div class="dot"></div></div>
     <div class="logo-text">BLUE SKY<span>Creative Partner</span></div>
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
+    <li class="has-dd" id="dd">
+      <button class="dd-btn" aria-expanded="false" aria-haspopup="true">Services
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l4 4 4-4"/></svg>
+      </button>
+      <div class="dropdown">
+        <a href="corporate-video-shots.html">Corporate Video &amp; Shoots<span>Films, edits, motion graphics</span></a>
+        <a href="social-media-marketing.html">Social Media, Marketing &amp; Branding<span>Content, identity, campaigns</span></a>
+        <a href="linkedin-marketing.html">LinkedIn Marketing &amp; Branding<span>Visibility, outreach, leads</span></a>
+      </div>
+    </li>
     <li><a href="#process">Process</a></li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#audience">Who We Serve</a></li>
@@ -826,7 +868,7 @@
     <h2 class="section-title">Three Pillars of<br>Creative Excellence</h2>
   </div>
   <div class="services-grid">
-    <div class="service-card card-yellow reveal">
+    <a href="corporate-video-shots.html" class="service-card card-yellow reveal">
       <div class="card-num">01</div>
       <div class="card-icon">🎬</div>
       <h3>Corporate Video<br>& Shoots</h3>
@@ -837,8 +879,8 @@
         <span class="tag">Shoots</span>
         <span class="tag">Motion Graphics</span>
       </div>
-    </div>
-    <div class="service-card card-black reveal">
+    </a>
+    <a href="social-media-marketing.html" class="service-card card-black reveal">
       <div class="card-num">02</div>
       <div class="card-icon">📱</div>
       <h3>Social Media,<br>Marketing & Branding</h3>
@@ -849,8 +891,8 @@
         <span class="tag">Poster Design</span>
         <span class="tag">Campaign Management</span>
       </div>
-    </div>
-    <div class="service-card card-outline reveal">
+    </a>
+    <a href="linkedin-marketing.html" class="service-card card-outline reveal">
       <div class="card-num">03</div>
       <div class="card-icon">💼</div>
       <h3>LinkedIn Marketing<br>& Branding</h3>
@@ -861,7 +903,7 @@
         <span class="tag">Company Pages</span>
         <span class="tag">Lead Generation</span>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
@@ -991,12 +1033,9 @@
     <div class="footer-col">
       <h6>Services</h6>
       <ul>
-        <li><a href="#services">Corporate Video</a></li>
-        <li><a href="#services">Video Shoots</a></li>
-        <li><a href="#services">Social Media Marketing</a></li>
-        <li><a href="#services">Brand Identity</a></li>
-        <li><a href="#services">LinkedIn Marketing</a></li>
-        <li><a href="#services">Lead Generation</a></li>
+        <li><a href="corporate-video-shots.html">Corporate Video &amp; Shoots</a></li>
+        <li><a href="social-media-marketing.html">Social Media Marketing</a></li>
+        <li><a href="linkedin-marketing.html">LinkedIn Marketing</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1048,6 +1087,21 @@
     const nav = document.querySelector('nav');
     nav.style.padding = window.scrollY > 50 ? '12px 60px' : '20px 60px';
   });
+
+  (function(){
+    var dd = document.getElementById('dd');
+    if (!dd) return;
+    var btn = dd.querySelector('.dd-btn');
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+    document.addEventListener('click', function(){
+      dd.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  })();
 </script>
 </body>
 </html>
