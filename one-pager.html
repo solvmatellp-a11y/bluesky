@@ -3,261 +3,430 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Blue Sky Studio</title>
+<title>Blue Sky Studio — One-Pager</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
     --yellow: #F5B800;
+    --yellow-light: #FFF3B0;
     --orange: #F07020;
     --black: #111010;
     --white: #FFFFFF;
+    --ink-soft: rgba(17,16,16,0.68);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html, body {
-    height: 100%;
-  }
+  html { scroll-behavior: smooth; }
 
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--black);
     color: var(--black);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 24px;
+    -webkit-font-smoothing: antialiased;
   }
 
-  .slide {
-    width: min(1120px, 100%);
-    aspect-ratio: 16 / 9;
+  /* One continuous yellow document canvas */
+  .doc {
+    width: min(820px, 100%);
+    margin: 0 auto;
     background: var(--yellow);
-    border-radius: 4px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: clamp(36px, 5vw, 64px) clamp(40px, 5.5vw, 72px);
-    box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+    min-height: 100vh;
   }
 
-  .slide-bg {
-    position: absolute;
-    right: -4%;
-    bottom: -18%;
+  .block {
+    padding: clamp(72px, 12vh, 140px) clamp(28px, 6vw, 64px);
+    position: relative;
+  }
+
+  .block + .block {
+    border-top: 1.5px solid rgba(0,0,0,0.1);
+  }
+
+  .eyebrow {
     font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(220px, 42vw, 480px);
-    line-height: 0.8;
-    color: rgba(255,255,255,0.16);
-    pointer-events: none;
-    user-select: none;
-    letter-spacing: -0.04em;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.5);
+    margin-bottom: 28px;
   }
 
-  .top {
-    position: relative;
-    z-index: 1;
+  .brand-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-  }
-
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    gap: 14px;
+    margin-bottom: 56px;
   }
 
   .mark {
-    width: 42px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
     background: var(--black);
-    border-radius: 10px;
+    border-radius: 12px;
     display: grid;
     place-items: center;
     position: relative;
     font-family: 'Syne', sans-serif;
     font-weight: 800;
-    font-size: 22px;
+    font-size: 26px;
     color: var(--yellow);
-    letter-spacing: -1px;
+    letter-spacing: -2px;
+    flex-shrink: 0;
   }
 
   .mark .dot {
     position: absolute;
-    top: 5px;
-    left: 7px;
-    width: 6px;
-    height: 6px;
+    top: 6px;
+    left: 8px;
+    width: 7px;
+    height: 7px;
     background: var(--orange);
     border-radius: 50%;
   }
 
-  .brand-name {
+  .brand-text {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
     font-size: 15px;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    line-height: 1.1;
+    line-height: 1.15;
   }
 
-  .brand-name span {
+  .brand-text span {
     display: block;
     font-weight: 500;
     font-size: 10px;
-    letter-spacing: 0.22em;
-    color: rgba(0,0,0,0.55);
-    margin-top: 2px;
+    letter-spacing: 0.2em;
+    color: rgba(0,0,0,0.5);
+    margin-top: 3px;
   }
 
-  .motto {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: rgba(0,0,0,0.55);
-  }
-
-  .center {
-    position: relative;
-    z-index: 1;
-    max-width: 14ch;
-  }
-
-  .center h1 {
+  h1 {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
-    font-size: clamp(48px, 7.2vw, 92px);
-    line-height: 0.92;
+    font-size: clamp(42px, 8vw, 72px);
+    line-height: 0.95;
     letter-spacing: -0.03em;
-    margin-bottom: 22px;
+    margin-bottom: 28px;
+    max-width: 11ch;
   }
 
-  .center h1 em {
+  h1 em {
     font-style: normal;
     color: var(--white);
     -webkit-text-stroke: 2px var(--black);
   }
 
-  .tagline {
-    font-size: clamp(15px, 1.6vw, 18px);
+  .lede {
+    font-size: clamp(18px, 2.4vw, 22px);
     font-weight: 300;
-    line-height: 1.5;
-    color: rgba(0,0,0,0.68);
+    line-height: 1.55;
+    color: var(--ink-soft);
     max-width: 28ch;
+    margin-bottom: 40px;
   }
 
-  .bottom {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
-
-  .services {
-    display: flex;
-    gap: clamp(20px, 3vw, 40px);
-    flex-wrap: wrap;
-  }
-
-  .services span {
+  .motto {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     font-family: 'Syne', sans-serif;
     font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.08em;
+    font-size: 13px;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: rgba(0,0,0,0.72);
-    position: relative;
-    padding-left: 14px;
   }
 
-  .services span::before {
+  .motto::before {
     content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
+    width: 28px;
+    height: 2px;
     background: var(--orange);
   }
 
-  .contact {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--black);
-    text-decoration: none;
-    border-bottom: 1.5px solid rgba(0,0,0,0.35);
-    padding-bottom: 2px;
-    transition: border-color 0.2s;
+  h2 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(32px, 5.5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    max-width: 14ch;
   }
 
-  .contact:hover { border-color: var(--black); }
+  .body {
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 38ch;
+  }
 
-  @media (max-width: 720px) {
-    body { padding: 12px; align-items: stretch; }
-    .slide {
-      aspect-ratio: auto;
-      min-height: calc(100vh - 24px);
-      border-radius: 8px;
-      padding: 32px 28px;
-    }
-    .top { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .center { max-width: none; }
-    .bottom { flex-direction: column; align-items: flex-start; gap: 28px; }
-    .services { flex-direction: column; gap: 12px; }
+  .body + .body { margin-top: 16px; }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 48px;
+  }
+
+  .metric {
+    background: rgba(0,0,0,0.08);
+    border-radius: 16px;
+    padding: 22px 16px;
+    text-align: center;
+  }
+
+  .metric b {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(26px, 4vw, 34px);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .metric span {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0,0,0,0.55);
+  }
+
+  .offers {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 40px;
+  }
+
+  .offer {
+    padding: 28px 0;
+    border-top: 1.5px solid rgba(0,0,0,0.12);
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .offer:last-child { border-bottom: 1.5px solid rgba(0,0,0,0.12); }
+
+  .offer-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    color: var(--orange);
+    padding-top: 4px;
+  }
+
+  .offer h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .offer p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 42ch;
+  }
+
+  .why-list {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .why-item {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+
+  .why-item i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--orange);
+    margin-top: 8px;
+  }
+
+  .why-item strong {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 4px;
+  }
+
+  .why-item p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 40ch;
+  }
+
+  .close {
+    background: var(--black);
+    color: var(--white);
+    border-top: none !important;
+  }
+
+  .close .eyebrow { color: var(--yellow); }
+  .close h2 { color: var(--white); max-width: 12ch; }
+  .close .body { color: rgba(255,255,255,0.6); }
+  .close .motto { color: var(--yellow); margin-top: 36px; }
+  .close .motto::before { background: var(--yellow); }
+
+  .contact {
+    margin-top: 48px;
+  }
+
+  .contact a {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 3.5vw, 32px);
+    color: var(--yellow);
+    text-decoration: none;
+    border-bottom: 3px solid var(--yellow);
+    padding-bottom: 4px;
+    transition: opacity 0.2s;
+  }
+
+  .contact a:hover { opacity: 0.8; }
+
+  .contact small {
+    display: block;
+    margin-top: 16px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  @media (max-width: 640px) {
+    .metrics { grid-template-columns: 1fr 1fr; }
+    .offer { grid-template-columns: 40px 1fr; gap: 14px; }
   }
 
   @media print {
-    body { background: white; padding: 0; }
-    .slide {
-      width: 100%;
-      height: 100vh;
-      box-shadow: none;
-      border-radius: 0;
-    }
+    body { background: white; }
+    .doc { width: 100%; }
+    .block { padding: 48px 40px; break-inside: avoid; }
   }
 </style>
 </head>
 <body>
 
-<div class="slide" role="img" aria-label="Blue Sky Studio one-pager">
-  <div class="slide-bg" aria-hidden="true">B</div>
+<article class="doc">
 
-  <div class="top">
-    <div class="brand">
+  <!-- WHO / OPENING -->
+  <section class="block">
+    <div class="brand-row">
       <div class="mark">B<span class="dot"></span></div>
-      <div class="brand-name">Blue Sky Studio<span>Creative Partner</span></div>
+      <div class="brand-text">Blue Sky Studio<span>Creative Partner</span></div>
+    </div>
+    <p class="eyebrow">Company one-pager</p>
+    <h1>We Don't Just Brand.<br>We Tell <em>Stories.</em></h1>
+    <p class="lede">Brand narratives that captivate, convert, and elevate — through video, social media, and LinkedIn marketing.</p>
+    <div class="motto">Always Storytelling</div>
+  </section>
+
+  <!-- ABOUT / VALUE -->
+  <section class="block">
+    <p class="eyebrow">Who we are</p>
+    <h2>A studio built on bold ideas</h2>
+    <p class="body">Blue Sky Creative Partner is a full-spectrum creative studio that transforms how brands present themselves. Every brand has a unique story — we tell it with clarity, creativity, and purpose.</p>
+    <p class="body">From polished corporate films to razor-sharp social content and LinkedIn presence, we design communication that doesn't just look good — it works.</p>
+    <div class="metrics">
+      <div class="metric"><b>150+</b><span>Brands</span></div>
+      <div class="metric"><b>3×</b><span>Lead growth</span></div>
+      <div class="metric"><b>500+</b><span>Videos</span></div>
+      <div class="metric"><b>98%</b><span>Satisfaction</span></div>
+    </div>
+  </section>
+
+  <!-- WHAT WE OFFER -->
+  <section class="block">
+    <p class="eyebrow">What we offer</p>
+    <h2>Three pillars of creative excellence</h2>
+    <p class="body">One partner for the full brand story — film, social, and professional presence — so every channel speaks in the same voice.</p>
+    <div class="offers">
+      <div class="offer">
+        <div class="offer-num">01</div>
+        <div>
+          <h3>Corporate Video &amp; Shoots</h3>
+          <p>From concept to camera to cut — corporate films, promotional videos, and documentary-style shoots that elevate how you are seen.</p>
+        </div>
+      </div>
+      <div class="offer">
+        <div class="offer-num">02</div>
+        <div>
+          <h3>Social Media, Marketing &amp; Branding</h3>
+          <p>Scroll-stopping content, cohesive brand identities, and data-driven campaigns that grow audiences and generate real leads.</p>
+        </div>
+      </div>
+      <div class="offer">
+        <div class="offer-num">03</div>
+        <div>
+          <h3>LinkedIn Marketing &amp; Branding</h3>
+          <p>Powerful LinkedIn presences for individuals and companies — profiles, thought leadership, and narrative journeys that attract opportunity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY IT MATTERS -->
+  <section class="block">
+    <p class="eyebrow">Why it matters</p>
+    <h2>More than deliverables</h2>
+    <p class="body">We embed in your brand journey. Beautiful content means nothing without results — we build for conversion, cohesion, and growth.</p>
+    <div class="why-list">
+      <div class="why-item">
+        <i></i>
+        <div>
+          <strong>Storytelling at the core</strong>
+          <p>Every output is a narrative chapter — structured with emotional resonance, not just design or footage.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <i></i>
+        <div>
+          <strong>Lead generation focus</strong>
+          <p>We attract high-potential leads for your business or personal brand, not vanity metrics.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <i></i>
+        <div>
+          <strong>End-to-end execution</strong>
+          <p>Strategy, creation, and distribution under one roof — one partner, complete ownership of your brand story.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / CTA -->
+  <section class="block close">
+    <p class="eyebrow">Next step</p>
+    <h2>Your brand story starts here</h2>
+    <p class="body">Tell us who you want to reach. We'll help you build the narrative that moves them.</p>
+    <div class="contact">
+      <a href="mailto:hello@bluesky.studio">hello@bluesky.studio</a>
+      <small>Blue Sky Creative Partner · Always Storytelling</small>
     </div>
     <div class="motto">Always Storytelling</div>
-  </div>
+  </section>
 
-  <div class="center">
-    <h1>We Tell<br><em>Stories.</em></h1>
-    <p class="tagline">Brand narratives through video, social, and LinkedIn.</p>
-  </div>
-
-  <div class="bottom">
-    <div class="services">
-      <span>Corporate Video</span>
-      <span>Social Media</span>
-      <span>LinkedIn</span>
-    </div>
-    <a class="contact" href="mailto:hello@bluesky.studio">hello@bluesky.studio</a>
-  </div>
-</div>
+</article>
 
 </body>
 </html>
